@@ -4,6 +4,8 @@ import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 
+import javax.sql.DataSource;
+
 /**
  * @program: springDay02
  * @description:
@@ -23,8 +25,8 @@ public class JDBCConfig {
     @Value("${jdbc.password}")
     private String password;
 
-    @Bean("dataSource")
-    public DruidDataSource getDataSource() {
+    @Bean
+    public DataSource getDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(driver);
         dataSource.setUrl(url);
