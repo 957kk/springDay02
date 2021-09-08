@@ -15,8 +15,8 @@ public class RedisConfig {
     // 第三方bean的加载
 
     @Bean
-    public JedisPool jedisPool(){
-        JedisPool jedisPool = new JedisPool("192.168.200.128", 6379);
+    public JedisPool jedisPool() {
+        JedisPool jedisPool = new JedisPool("127.0.0.1", 6379);
         return jedisPool;
     }
 

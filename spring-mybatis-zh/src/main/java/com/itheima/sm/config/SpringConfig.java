@@ -2,6 +2,8 @@ package com.itheima.sm.config;
 
 import org.springframework.context.annotation.*;
 
+import java.util.Optional;
+
 /**
  * @program: springDay02
  * @description:
@@ -14,4 +16,5 @@ import org.springframework.context.annotation.*;
 @PropertySource({"jdbc.properties"})
 @Import({MybatisConfig.class, JDBCConfig.class})
 public class SpringConfig {
+    
 }

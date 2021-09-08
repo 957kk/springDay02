@@ -17,14 +17,7 @@ public interface UserService {
      * @param user
      * @return
      */
-    @Transactional(
-            readOnly = false,
-            timeout = -1,
-            isolation = Isolation.DEFAULT,
-            rollbackFor = {Exception.class},
-            noRollbackFor = {},
-            propagation = Propagation.REQUIRED
-    )
+
     boolean register(User user);
 
 }
