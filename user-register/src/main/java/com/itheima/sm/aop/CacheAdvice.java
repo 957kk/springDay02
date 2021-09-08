@@ -3,7 +3,9 @@ package com.itheima.sm.aop;
 import com.alibaba.druid.util.StringUtils;
 import com.itheima.sm.dal.cache.Cache;
 import com.itheima.sm.domain.User;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -37,7 +39,6 @@ public class CacheAdvice {
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
         Object[] args = pjp.getArgs();
         User user = (User) args[0];
-
         if (!Optional.ofNullable(user).isPresent()) {
             return false;
         }
@@ -53,5 +54,20 @@ public class CacheAdvice {
 
         Object proceed = pjp.proceed();
         return proceed;
+    }
+
+    @AfterThrowing("pt()")
+    public Object afterThrowing(JoinPoint jp) {
+        Object[] args = jp.getArgs();
+        User user = (User) args[0];
+        if (!Optional.ofNullable(user).isPresent()) {
+            return false;
+        }
+        String name = user.getName();
+        if (StringUtils.isEmpty(name)) {
+            return false;
+        }
+        boolean b = cache.sRem(SET_NAME, name);
+        return b;
     }
 }

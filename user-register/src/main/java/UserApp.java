@@ -18,8 +18,8 @@ public class UserApp {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
         UserService userService = (UserService) applicationContext.getBean("userService");
         User user = new User();
-        user.setId(14L);
-        user.setName("赵飞虎1");
+        user.setId(2L);
+        user.setName("赵");
         user.setPassword("1314");
         user.setCreateTime(new Date());
         user.setUpdateTime(new Date());

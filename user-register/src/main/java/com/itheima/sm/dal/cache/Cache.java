@@ -14,6 +14,8 @@ public interface Cache {
 
       Set<String> get(String key);
 
+      boolean sRem(String key ,String value);
+
 
 
 }

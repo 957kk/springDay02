@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     //  AOP 学完要改造
     @Override
     public boolean register(User user) {
-            userMapper.insertUser(user);
+        userMapper.insertUser(user);
         return true;
     }
 }
